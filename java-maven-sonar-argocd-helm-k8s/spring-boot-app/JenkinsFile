@@ -9,10 +9,10 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        git branch: 'main', url: 'https://github.com/JOYMIAH/ultimate-ci-cd.git'
+        //git branch: 'main', url:'https://github.com/JOYMIAH/ultimate-ci-cd.git'
       }
     }
-    stage('Build and Test') {
+    stage('Build and Test') {                                                          
       steps {
         sh 'ls -ltr'
         // build the project and create a JAR file
@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "abhishekf5/ultimate-cicd:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "joymiah1/ultimate-cicd:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
