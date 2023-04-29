@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        // git branch: 'master', url: 'https://github.com/JOYMIAH/test-ci-cd.git'
+        // git branch: 'master', url: 'https://github.com/JOYMIAH/testing-ci-cd.git'
       }
     }
     stage('Build and Test') {
@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "joymiah1/ultimate-cicd:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "joymiah1/cicd:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "test-ci-cd"
+            GIT_REPO_NAME = "testing-ci-cd"
             GIT_USER_NAME = "JOYMIAH"
         }
         steps {
