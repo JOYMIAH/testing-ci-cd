@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
+        sh 'sudo su'
         sh 'echo passed'
         // git branch: 'main', url: 'https://github.com/JOYMIAH/testing-ci-cd.git'
       }
