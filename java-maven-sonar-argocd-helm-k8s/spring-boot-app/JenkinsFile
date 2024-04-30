@@ -8,6 +8,8 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
+        sh 'sudo chmod -R 777 /var/lib/jenkins/workspace/'
+        sh 'sudo chown -R jenkins:jenkins /var/lib/jenkins/workspace/'
         sh 'echo passed'
         // git branch: 'main', url: 'https://github.com/JOYMIAH/testing-ci-cd.git'
       }
